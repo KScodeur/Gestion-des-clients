@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+   
+    <title>Local Storage</title>
+</head>
+<body>
+    <header>
+        <div class="menu-bar">
+            <!-- <span id="fullhours"></span> -->
+            <div class="container-date-hours">
+                <span id="fullhours"></span>
+                <span id="myDate"></span>
+            </div>
+            <!-- date et heure  -->
+            <!-- profil -->
+            <div class="container-profil ajouter-btn" id="myBtn" >
+                <!-- <i class="fa-solid fa-user"></i> -->
+                <img src="images/img-1.jpg" alt="">
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container-row1">
+                <div class="container-search-select">
+                    <div class="container-icons-search">
+                        <input type="search" for="icons-search" onkeyup="filter(event)">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                <div>
+                    <select name="" id="">
+                        <option value="">Sexe</option>
+                        <option value="">F</option>
+                        <option value="">M</option>
+                    </select>
+                </div>
+                </div>
+                <div>
+                    <button  class="ajouter-btn" id="ajouter">+ Ajouter</button>
+                    <!-- modal clique button ajouter -->
+                    <!-- <div id="myModal" class="modal">
+                        <div class='modal-content'>
+
+                            <span class="close">&mon modal</span>
+                            <p>Ça viens</p>
+                        </div>
+                    </div> -->
+                    <button class="supprimer-btn" onclick="selectElement()">Supprimer</button>
+                </div>
+            </div>
+            <!-- debut du tableau -->
+            <div>
+                <table cellspacing = 0 >
+                    <thead  class="container-thead color">
+                        <!-- <th> -->
+                            <td>check</td>
+                            <td>id</td>
+                            <td>Nom</td>
+                            <td>Prénom</td>
+                            <td>Date de naissance</td>
+                            <td>Adresse Email</td>
+                            <td>Phone</td>
+                            <td>Sexe</td>
+                            <td>Actions</td>
+                        <!-- </th> -->
+                    </thead>
+                    <tbody id="users-container"></tbody>
+                </table>
+            </div>
+            <!-- MODAL user-->
+            <div class="container-modal" id="myModal">
+                <div class='modal-content'>
+                
+                <div class="close"><i class="fa-solid fa-xmark"></i>
+                <!-- <span ></span> -->
+                </div>
+                <form action="">
+                <div class="form-row1">
+                    <div class="container-profil">
+                        <img src="images/img-1.jpg" alt="">
+                    </div>
+                    <div class="container-full-name">
+                        <div>
+                            <label for="" class="label-user-name">Nom</label>
+                            <input type="text" class="input-user-name">
+                        </div>
+                        <div>
+                            <label for="" class="label-user-name">Prenom</label>
+                            <input type="text" class="input-user-name">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="" class="label-user">Date de naissance</label>
+                    <input type="text" class="input-user">
+                </div> 
+                <div>
+                    <label for="" class="label-user">Adresse Mail</label>
+                    <input type="text" class="input-user">
+                </div>
+                <div>
+                    <label for="" class="label-user">Phone</label>
+                    <input type="text" class="input-user">
+                </div>
+                <div>
+                        <label for="" class="label-user">Sexe</label>
+                    <select name="" id="" class="select-user">
+                        <option value=""></option>
+                        <option value="">Masculin</option>
+                        <option value="">Feminin</option>
+                    </select>
+                </div>
+                <div>
+                    <textarea name="" id="" cols="53" rows="10"></textarea>
+                </div>
+                <div class="container-button">
+                    <button class="btn-modifier supprimer-btn">Modifier</button>
+                </div>
+                </form>
+        </div>
+        </div>
+            <!-- formulaire d'ajout -->
+            <div class="container-modal2" id="modalAjout">
+                <form action="" class="modal-content2"  onsubmit="event.preventDefault()">
+                    <div class="fermer"><i class="fa-solid fa-xmark"></i></div>
+                    <h2>Ajouter</h2>
+                    <div>
+                        <label for="" class="label-ajout">nom</label>
+                        <input type="text" id="nom" placeholder="Veuillez entrer le nom" class="input-ajout">
+                    </div>
+                    <div>
+                        <label for="" class="label-ajout">Prénom</label>
+                        <input type="text" id="prenom" placeholder="Veuillez entrer le prénom" class="input-ajout">
+                    </div>
+                    <div>
+                        <label for="" class="label-ajout">Date de naissance</label>
+                        <input type="date" class="input-ajout" id="DateDeNaissance">
+                    </div>
+                    <div>
+                        <label for="" class="label-ajout">Adresse Mail</label>
+                        <input type="text" placeholder="email@gmail.com" id="email" class="input-ajout">
+                    </div>
+                    <div>
+                        <label for="" class="label-ajout">Phone</label>
+                        <input type="text" placeholder="+000 00000000" id="phone" class="input-ajout">
+                    </div>
+                    <div>
+                        <label for="" class="label-ajout">Sexe</label>
+                        <select name="" id="sexe" class="select-ajout">
+                            <option value="">selectionner le sexe</option>
+                            <option value="H">Homme</option>
+                            <option value="F">Femme</option>
+                        </select>
+                    </div>
+                    <div class="container-button-form-ajout">
+                        <div><button class="btn-annuler form-btn ">Annuler</button></div>
+                        <div><button class="btn-sauvegarder " onclick="addUser()">Sauvegarder</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+   </main>
+</body>
+<script src="modal-user.js"></script>
+<script src="modal-ajouter.js"></script>
+<script src="hours.js"></script>
+<script src="recuperation.js"></script>
+<script src="search-bar.js"></script>
+<script src="supprimer.js"></script>
+
+</html>
+
+
+ 
+
+
+
